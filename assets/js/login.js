@@ -7,6 +7,8 @@ $(function () {
     // 获取表单输入域的用户名和密码
     // username=asdf&password=asdffffff
     var formData = $(this).serialize()
+    // 提交表单之前需要做表单验证，如果自己实现有点繁琐，所以可以借助LayUI实现
+    
     // 调用后台接口验证是否正确
     $.ajax({
       type: 'post',
@@ -20,4 +22,5 @@ $(function () {
       }
     })
   })
+  
 })
