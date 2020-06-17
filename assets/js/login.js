@@ -35,6 +35,7 @@ $(function () {
       success: function (res) {
         // 登录成功后，跳转到主页面
         if (res.status === 0) {
+          localStorage.setItem('mytoken',res.token)
           location.href = './index.html'
         }
       }
