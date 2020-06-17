@@ -41,5 +41,15 @@ $(function () {
       }
     })
   })
-  
+
+  //注册表单下面链接
+  $('#registerForm a').click(function() {
+    $('#registerForm').hide()
+    $('#loginForm').show()
+  })
+  //登录表单下面链接
+  $('#loginForm a').click(function() {
+    $('#loginForm').hide()
+    $('#registerForm').show()
+  })
 })
