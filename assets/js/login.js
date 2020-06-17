@@ -15,6 +15,14 @@ $(function () {
       if (!reg.test(value)) {
         return '密码必须是6位数字'
       }
+    },
+    same: function(value) {
+      //获取原始密码
+      var pwd = $('#registerForm input[name=password]').val()
+      console.log(pwd,value);
+      if(pwd !== value) {
+        return '两次输入的密码必须一致'
+      }
     }
   })
 
@@ -56,8 +64,8 @@ $(function () {
       success: function (res) {
         // 登录成功后，跳转到主页面
         if (res.status === 0) {
-          //注册成功，调用登录点击事件
-          $('#loginForm a').click()
+          //注册成功，调用注册点击事件
+          $('#registerForm a').click()
         }else{
           // 注册失败提示
           // layer是一个独立的模块，默认可以独立使用
