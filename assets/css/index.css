@@ -1,0 +1,18 @@
+.welcome {
+  color: #fff;
+}
+.welcome img {
+  height: 32px;
+  margin: 14px;
+}
+.welcome div {
+  display: inline-block;
+  height: 32px;
+  width: 32px;
+  margin: 14px;
+  background: #00988B;
+  border-radius: 16px;
+  text-align: center;
+  line-height: 32px;
+  vertical-align: middle;
+}
