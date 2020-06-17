@@ -16,3 +16,10 @@
   line-height: 32px;
   vertical-align: middle;
 }
+.layui-icon-logout,
+.iconfont {
+    margin-right: 10px;
+}
+.layui-icon-app {
+    margin: 0 10px;
+}
