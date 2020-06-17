@@ -42,4 +42,22 @@ $(function() {
         })
     }
     loadUserInfo();
+
+    //绑定退出事件
+    // 1.layui弹框
+    // 2.清空数据
+    // 3.关闭弹框
+    // 4.跳转登录页面
+    $('#logout-btn').click(function() {
+        layer.confirm('确定要退出吗？', {icon: 3, title:'提示'}, function(index){
+            //实现退出的功能：清除token
+            localStorage.removeItem('mytoken')
+
+            // 关闭弹窗
+            layer.close(index);
+            
+            //调转登录页面
+            location.href = "./login.html"
+        });
+    })
 })
