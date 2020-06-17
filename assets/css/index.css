@@ -23,3 +23,7 @@
 .layui-icon-app {
     margin: 0 10px;
 }
+.layui-body iframe {
+    width: 100%;
+    height: 100%;
+}
