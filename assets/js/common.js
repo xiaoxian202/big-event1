@@ -4,6 +4,10 @@
 var baseURL = 'http://ajax.frontend.itheima.net/'
 // option形参是jQuery请求方法的配置信息
 $.ajaxPrefilter(function(option) {
+    // 进度条
+    option.beforeSend = function() {
+        NProgress && NProgress.start()
+    }
     //1.配置通用的URL地址
     option.url = baseURL + option.url
     //2.设置接口的请求头信息
@@ -17,6 +21,7 @@ $.ajaxPrefilter(function(option) {
     // 3.处理通常异常情况
     // 服务器响应结束时触发
     option.complete = function(res) {
+            NProgress && NProgress.done()
         // console.log(res);
         if(res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
             //把无效的token清除
