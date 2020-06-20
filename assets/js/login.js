@@ -45,6 +45,8 @@ $(function () {
         if (res.status === 0) {
           localStorage.setItem('mytoken',res.token)
           location.href = './index.html'
+        }else {
+          layer.msg(res.message)
         }
       }
     })
