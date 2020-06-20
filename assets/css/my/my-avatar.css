@@ -58,3 +58,6 @@
   overflow: hidden;
   border-radius: 50%;
 }
+#selectImg {
+    display: none;
+}

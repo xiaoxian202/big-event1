@@ -29,10 +29,19 @@ $(function() {
                     // info.user_pic = 'http://t.cn/RCzsdCq'
                    if(info.user_pic) {
                        //删除默认头像
-                       $('#welcome-username').siblings('div').remove()
+                       $('#welcome-username,#nav-username')
+                       .parent()
+                       .siblings('div')
+                       .remove()
                        //添加新头像
                     //    <img src="http://t.cn/RCzsdCq">
-                       $('#welcome-username').parent().prepend('<img src="'+info.user_pic+'">')
+                       $('#welcome-username,#nav-username')
+                       .parent()
+                       .parent()
+                       .find('img')
+                       .remove()
+                       .end()//退回到上一次选择器选中的内容
+                       .prepend('<img src="'+info.user_pic+'">')
                    }else {
                        //显示div
                    }
@@ -42,6 +51,9 @@ $(function() {
         })
     }
     loadUserInfo();
+
+    // 把加载用户信息的方法添加到$对象上（本质上就是jq插件）
+    $.loadUserInfo = loadUserInfo
 
     //绑定退出事件
     // 1.layui弹框

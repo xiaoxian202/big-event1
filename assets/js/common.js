@@ -2,7 +2,8 @@ $(function() {
     /**
      通用的接口调用设置
     */
-    var baseURL = 'http://ajax.frontend.itheima.net/'
+    // var baseURL = 'http://ajax.frontend.itheima.net/'
+    var baseURL = 'http://www.liulongbin.top:3007/'
     // option形参是jQuery请求方法的配置信息
     $.ajaxPrefilter(function(option) {
         // 进度条
