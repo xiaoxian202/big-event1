@@ -23,15 +23,85 @@
     <script src="../assets/lib/nprogress/nprogress.js"></script>
     <script src="../assets/js/common.js"></script>
     <script src="../assets/js/article/publish.js"></script>
+
+    <!-- 定义模板 -->
+    <script type="text/html" id="cate-tpl">
+        <option value="">请选择文章分类</option>
+        {{each}}
+            <option value="{{$value.Id}}">{{$value.name}}</option>
+        {{/each}}
+    </script>
 </head>
 <body>
-    <form action="" id="add-form">
+    <div class="layui-card">
+        <div class="layui-card-header">发布文章</div>
+        <div class="layui-card-body">
+            <!-- 表单区域 -->
+            <form class="layui-form" action="" id="add-form">
+                <!-- 文章标题 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章标题</label>
+                    <div class="layui-input-block">
+                      <input type="text" name="title" required  lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <!-- 文章分类 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章分类</label>
+                    <div class="layui-input-block">
+                      <select name="cate_id" id="cate-list" lay-verify="required">
+                        <!-- <option value=""></option>
+                        <option value="0">北京</option>
+                        <option value="1">上海</option>
+                        <option value="2">广州</option>
+                        <option value="3">深圳</option>
+                        <option value="4">杭州</option> -->
+                      </select>
+                    </div>
+                </div>
+                <!-- 文章内容 -->
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">文章内容</label>
+                    <div class="layui-input-block">
+                      <textarea name="content" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <!-- 文章封面 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">文章封面</label>
+                    <div class="layui-input-block cover-box">
+                        <!-- 左侧裁剪区域 -->
+                        <div class="cover-left">
+                            <img id="image" src="../assets/images/sample2.jpg" alt="" />
+                        </div>
+                        <!-- 右侧预览区域和选择封面区域 -->
+                        <div class="cover-right">
+                            <!-- 预览的区域 -->
+                            <div class="img-preview"></div>
+                            <!-- 选择封面按钮 -->
+                            <input type="file" name="" id="cover_img">
+                            <button type="button" id="select-btn" class="layui-btn layui-btn-danger">选择封面</button>
+                        </div>
+                    </div>                 
+                </div>
+                <!-- 按钮 -->
+                <div class="layui-form-item layui-form-text">
+                    <div class="layui-input-block" id="submit-btn">
+                        <button type="submit" lay-submit data-type="publish" class="layui-btn">发布</button>
+                        <button type="submit" lay-submit data-type="temp" class="layui-btn layui-btn-primary">存为草稿</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- <form action="" id="add-form">
         标题：<input type="text" name="title"/><br>
         分类id：<input type="text" name="cate_id"/><br>
         内容：<input type="text" name="content"/><br>
         文章封面：<input type="file" name="cover_img"/><br>
         状态：<input type="text" name="state"/><br>
-        <button>提交</button>
+        <button>提交</button> -->
     </form>
 </body>
 </html>
