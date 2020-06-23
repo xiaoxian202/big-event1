@@ -1,13 +1,4 @@
 $(function() {
-    
-    //获取表单数据
-    $.ajax({
-        type:'post',
-        url:'my/article/edit',
-        success:function(res) {
-            console.log(res);
-        }
-    })
     // 导入表单对象
     var form = layui.form
     //初始化下拉列表 一个就行
