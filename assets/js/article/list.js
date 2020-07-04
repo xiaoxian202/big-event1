@@ -1,11 +1,13 @@
 $(function() {
     //获取表单对象
     var form = layui.form
+    //分页
+    var laypage = layui.laypage
 
     //页码:必须从1开始
     var pagenum = 1
     // 每页显示多少条数据
-    var pagesize = 10
+    var pagesize = 3
 
     //补零函数
     function zero(data) {
@@ -39,6 +41,7 @@ $(function() {
                 // $('#category').append(tags)
                 //更新渲染 是layui规定
                 form.render('select')
+
             }
         })
     }
@@ -55,6 +58,38 @@ $(function() {
                 // 把数据填充到模板
                 var tags = template('table-tpl',res)
                 $('.layui-table tbody').html(tags)
+
+                //分页
+                laypage.render({
+                    // 当前页码
+                    curr:pagenum,
+                    //注意，这里的 test1 是 ID，不用加 # 号
+                    elem: 'articlePage', 
+                    //数据总数，从服务端得到
+                    count: res.total, 
+                    //每页显示的条数
+                    limit:pagesize,
+                    //每页显示条数列表
+                    limits:[3, 9, 30, 40, 50],
+                    //分页调布局效果
+                    layout:['prev', 'page', 'next','skip','count','limit'],
+                    //页面切换时触发的动作
+                    jump: function(obj, first) {
+                        //这里触发时需要修改当前页码
+                        pagenum = obj.curr
+                        // 切换每页显示的条数时，修改pagesize
+                        pagesize = obj.limit
+                        if(!first) {
+                            //重新加载数据
+                            loadTableData({
+                                //页码:必须从1开始
+                                pagenum:pagenum,
+                                // 每页显示多少条数据
+                                pagesize:pagesize
+                            })
+                        }
+                    }
+                })
             }
         })
     }
